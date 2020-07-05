@@ -14,17 +14,25 @@ export const UserConsumer = UserData.Consumer;
 class App extends Component {
     constructor(props) {
         super(props);
+        this.toggleName = () => {
+            this.setState(state => ({
+                name: state.name === 'Laura Palmer' ? 'Unknown' : 'Laura Palmer'
+            }) )
+        }
+
         this.state = {
             news: {
                 type: 'everything',
                 query: 'domains=techcrunch.com&language=en'
             },
+            name: 'Laura Palmer',
+            toggleName: this.toggleName
         };
     }
 
     render() {
         return (
-            <UserData.Provider value={user}>
+            <UserData.Provider value={this.state}>
                 <div className="containwer-fluid">
                     <div className="navbar-fixed">
                         <nav>
