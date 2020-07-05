@@ -9,6 +9,7 @@ const user = {
 }
 
 const UserData = React.createContext();
+export const UserConsumer = UserData.Consumer;
 
 class App extends Component {
     constructor(props) {
