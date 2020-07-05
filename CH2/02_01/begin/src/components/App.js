@@ -11,13 +11,16 @@ const user = {
 const UserData = React.createContext();
 export const UserConsumer = UserData.Consumer;
 
+const Theme = React.createContext();
+export const ThemeConsumer = Theme.Consumer;
+
 class App extends Component {
     constructor(props) {
         super(props);
         this.toggleName = () => {
             this.setState(state => ({
                 name: state.name === 'Laura Palmer' ? 'Unknown' : 'Laura Palmer'
-            }) )
+            }))
         }
 
         this.state = {
@@ -26,7 +29,8 @@ class App extends Component {
                 query: 'domains=techcrunch.com&language=en'
             },
             name: 'Laura Palmer',
-            toggleName: this.toggleName
+            toggleName: this.toggleName,
+            styles: {display: 'flex'}
         };
     }
 
@@ -43,7 +47,9 @@ class App extends Component {
                     </div>
                     <div className="row">
                         <div className="col s12">
-                            <News news={this.state.news}/>
+                            <Theme.Provider value={this.state}>
+                                <News news={this.state.news}/>
+                            </Theme.Provider>
                         </div>
                     </div>
                 </div>
